@@ -78,7 +78,12 @@ app.get('/doc/:docName', function (req, res) {
   })
 })
 
-
+app.post('/blog/add', (req, res) => {
+  console.log(req.body);
+  dbUtil.insertData(req.body, r => {
+    res.sendStatus(200);    
+  })
+})
 
 /**
  * 启动服务器
@@ -91,5 +96,6 @@ var server = app.listen(8001, function () {
   console.log("app running in http://%s:%s", host, port)
 
 })
+
 
 
